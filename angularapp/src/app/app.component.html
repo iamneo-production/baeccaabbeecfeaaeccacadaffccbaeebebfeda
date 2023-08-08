@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="head-navbar" id="headerContainer">CALORY TRACKER</div><br><br>
+    <div class="search" id="searchBox">
+        Search<br>
+        <input type="text" id="searchText" [(ngModel)]="enteredSearchvalue" (input)="onSearchTextChanged()" (keyup)="Onkey(enteredSearchvalue)"/><br><br>
+        <div id="displayContainer" >
+            <div class="card"  *ngFor = "let card of foodName" >
+                <div *ngIf="searchText === '' || card.name.toLowerCase().includes(searchText)">
+                    <img class="card-img-top" src="{{card.image}}" alt="Card image cap" >
+                    <div class="card-body" >
+                        <label class="card-title">{{card.name}}</label>
+                        <p class="card-text">{{card.calories}}</p>
+                        <input type="number" id="count"><button>ADD</button>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+    </div>
+    <form #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
+         
+        <div  > 
+            <div class="info">
+                <button id="newFood" name="newFood">ADD NEW FOOD</button><br><br>
+                Name : <input type="text" required ngModel name="name"  name="name" id="name" placeholder="Enter food name.." ngModel><br><br>
+                Calories : <input type="text" required ngModel name="calories" name="calories" id="calories" placeholder="Enter the calories amount.." ngModel><br><br>
+                Image : <input type="text" required ngModel name="image" name="image" id="image" placeholder="Enter image url.." ngModel><br><br>
+            </div>
+        </div>
+        <div class="flex">
+        <div *ngFor = "let card of foodName">
+            <br>&nbsp;&nbsp;&nbsp;{{card.name}}<br>
+        </div>
+        </div>
+
+         
+    </form>
+    
+    
+</body>
+</html>
