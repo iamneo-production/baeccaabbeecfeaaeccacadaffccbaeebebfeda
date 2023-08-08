@@ -11,13 +11,13 @@ import { Component ,EventEmitter,Output } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularapp';
-  ImagePath: string;
+  
   name='';
   foodName:newFood[] =[];
   image ='';
   calories=0;
   
-  count:number;
+  
   
   
 
@@ -26,11 +26,7 @@ export class AppComponent {
     this.foodName.push(val);
   }
   
-  Oclick()
-  {
-    console.log(this.count);
-
-  }
+  
   enteredSearchvalue:string = '';
 
   @Output()
